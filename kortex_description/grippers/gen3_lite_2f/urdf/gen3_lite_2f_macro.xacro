@@ -76,7 +76,8 @@
       <parent link="${prefix}gripper_base_link" />
       <child link="${prefix}right_finger_prox_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-0.09" upper="0.96" effort="1000" velocity="0.6" />
+      <!-- <limit lower="-0.09" upper="0.96" effort="10" velocity="0.6" /> -->
+      <limit lower="-0.09" upper="0.96" effort="10" velocity="0.2" />
     </joint>
     <link name="${prefix}right_finger_dist_link">
       <inertial>
@@ -108,7 +109,8 @@
       <parent link="${prefix}right_finger_prox_link" />
       <child link="${prefix}right_finger_dist_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-0.50" upper="0.21" effort="1000" velocity="1000" /> <!--limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" /-->
+      <!-- <limit lower="-0.50" upper="0.21" effort="10" velocity="1000" /> limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" / -->
+      <limit lower="-0.50" upper="0.21" effort="10" velocity="1000" /> <!--limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" /-->
       <mimic joint="${prefix}right_finger_bottom_joint" multiplier="-0.676" offset="0.149" />
     </joint>
 
@@ -142,7 +144,8 @@
       <parent link="${prefix}gripper_base_link" />
       <child link="${prefix}left_finger_prox_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-0.96" upper="0.09" effort="1000" velocity="1000" />
+      <!-- <limit lower="-0.96" upper="0.09" effort="10" velocity="1000" /> -->
+      <limit lower="-0.96" upper="0.09" effort="10" velocity="1000" />
       <mimic joint="${prefix}right_finger_bottom_joint" multiplier="-1.0" offset="0.0" />
     </joint>
     <link name="${prefix}left_finger_dist_link">
@@ -175,8 +178,112 @@
       <parent link="${prefix}left_finger_prox_link" />
       <child link="${prefix}left_finger_dist_link" />
       <axis xyz="0 0 -1" />
-      <limit lower="-0.50" upper="0.21" effort="1000" velocity="1000" /> <!--limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" /-->
+      <!-- <limit lower="-0.50" upper="0.21" effort="10" velocity="1000" /> limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" / -->
+      <limit lower="-0.50" upper="0.21" effort="10" velocity="1000" /> <!--limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" /-->
       <mimic joint="${prefix}right_finger_bottom_joint" multiplier="-0.676" offset="0.149" />
     </joint>
+
+    <!-- Add friction -->
+    <gazebo reference="${prefix}right_finger_prox_link">
+    <collision name="${prefix}right_finger_prox_link_collision">
+      <surface>
+        <friction>
+          <torsional>
+            <coefficient>10.0</coefficient>
+            <use_patch_radius>true</use_patch_radius>
+            <patch_radius>0.05</patch_radius>
+          </torsional>
+        </friction>
+        <contact>
+          <poissons_ratio>0.5</poissons_ratio>
+          <elastic_modulus>1e8</elastic_modulus>
+        </contact>
+      </surface>
+    </collision>
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <maxVel>1</maxVel>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd> 
+    <fdir1>0 0 1</fdir1>
+    <minDepth>0.0</minDepth>
+    <maxContacts>100</maxContacts>
+  </gazebo>
+  <gazebo reference="${prefix}right_finger_dist_link">
+    <collision name="${prefix}right_finger_dist_link_collision">
+      <surface>
+        <friction>
+          <torsional>
+            <coefficient>10.0</coefficient>
+            <use_patch_radius>true</use_patch_radius>
+            <patch_radius>0.05</patch_radius>
+          </torsional>
+        </friction>
+        <contact>
+          <poissons_ratio>0.5</poissons_ratio>
+          <elastic_modulus>1e8</elastic_modulus>
+        </contact>
+      </surface>
+    </collision>
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <maxVel>1</maxVel>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd> 
+    <fdir1>0 0 1</fdir1>
+    <minDepth>0.0</minDepth>
+    <maxContacts>100</maxContacts>
+  </gazebo>
+  <gazebo reference="${prefix}left_finger_prox_link">
+    <collision name="${prefix}left_finger_prox_link_collision">
+      <surface>
+        <friction>
+          <torsional>
+            <coefficient>10.0</coefficient>
+            <use_patch_radius>true</use_patch_radius>
+            <patch_radius>0.05</patch_radius>
+          </torsional>
+        </friction>
+        <contact>
+          <poissons_ratio>0.5</poissons_ratio>
+          <elastic_modulus>1e8</elastic_modulus>
+        </contact>
+      </surface>
+    </collision>
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <maxVel>1</maxVel>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd> 
+    <fdir1>0 0 1</fdir1>
+    <minDepth>0.0</minDepth>
+    <maxContacts>100</maxContacts>
+  </gazebo>
+  <gazebo reference="${prefix}left_finger_dist_link">
+    <collision name="${prefix}left_finger_dist_link_collision">
+      <surface>
+        <friction>
+          <torsional>
+            <coefficient>10.0</coefficient>
+            <use_patch_radius>true</use_patch_radius>
+            <patch_radius>0.05</patch_radius>
+          </torsional>
+        </friction>
+        <contact>
+          <poissons_ratio>0.5</poissons_ratio>
+          <elastic_modulus>1e8</elastic_modulus>
+        </contact>
+      </surface>
+    </collision>
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <maxVel>1</maxVel>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd> 
+    <fdir1>0 0 1</fdir1>
+    <minDepth>0.0</minDepth>
+    <maxContacts>100</maxContacts>
+  </gazebo>
+
   </xacro:macro>
 </robot>

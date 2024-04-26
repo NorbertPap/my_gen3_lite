@@ -42,7 +42,7 @@
     <parent link="GRIPPER_FRAME" />
     <child link="RIGHT_FINGER_PROX" />
     <axis xyz="0 0 1" />
-    <limit lower="-0.09" upper="0.96" effort="1000" velocity="1000" />
+    <limit lower="-0.09" upper="0.96" effort="10" velocity="1000" />
   </joint>
   <link name="RIGHT_FINGER_DIST">
     <inertial>
@@ -68,7 +68,7 @@
     <parent link="RIGHT_FINGER_PROX" />
     <child link="RIGHT_FINGER_DIST" />
     <axis xyz="0 0 1" />
-    <limit lower="-1.03" upper="0.21" effort="1000" velocity="1000" />
+    <limit lower="-1.03" upper="0.21" effort="10" velocity="1000" />
   </joint>
   <link name="LEFT_FINGER_PROX">
     <inertial>
@@ -94,7 +94,7 @@
     <parent link="GRIPPER_FRAME" />
     <child link="LEFT_FINGER_PROX" />
     <axis xyz="0 0 1" />
-    <limit lower="-0.96" upper="0.09" effort="1000" velocity="1000" />
+    <limit lower="-0.96" upper="0.09" effort="10" velocity="1000" />
   </joint>
   <link name="LEFT_FINGER_DIST">
     <inertial>
@@ -120,6 +120,6 @@
     <parent link="LEFT_FINGER_PROX" />
     <child link="LEFT_FINGER_DIST" />
     <axis xyz="0 0 -1" />
-    <limit lower="-0.21" upper="1.03" effort="1000" velocity="1000" />
+    <limit lower="-0.21" upper="1.03" effort="10" velocity="1000" />
   </joint>
 </robot>
