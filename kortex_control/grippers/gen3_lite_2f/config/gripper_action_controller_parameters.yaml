@@ -3,9 +3,9 @@ $(arg prefix)gen3_lite_2f_gripper_controller:
     type: position_controllers/GazeboGripperActionController
     joint: $(arg prefix)right_finger_bottom_joint
     # action_monitor_rate: 100
-    goal_tolerance: 0.6 # 0.1                                      # Goal tolerance in radians
-    stall_position_threshold: 0.1 # Tune to fit your robot  # Arm is stalling if position (radians) hasn't moved over the threshold
-    stall_timeout: 1                                       # Arm has stalled if timeout (seconds) is reached
+    goal_tolerance: 0.05 # 0.1                                      # Goal tolerance in radians
+    stall_position_threshold: 0.05 # Tune to fit your robot  # Arm is stalling if position (radians) hasn't moved over the threshold
+    stall_timeout: 0.5                                     # Arm has stalled if timeout (seconds) is reached
     action_monitor_rate: 10 
     gains:
         $(arg prefix)right_finger_bottom_joint: {p: 10.0, i: 0.0, d: 0.0}
